@@ -1,0 +1,23 @@
+@mixin list($width) {
+  width: $width;
+  height: 40px;
+}
+
+@mixin container($color) {
+  width: 400px;
+  height: 100px;
+  background-color: $color;
+}
+
+@mixin main-container($width, $color) {
+  width: $width;
+  height: 250px;
+  background-color: $color;
+}
+
+@mixin list-container($top) {
+  position: absolute;
+  top: $top;
+  display: flex;
+  gap: 10px;
+}

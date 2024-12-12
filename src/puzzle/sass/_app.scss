@@ -1,0 +1,67 @@
+@use 'variable' as var;
+@use 'mixin' as mix;
+
+.header {
+  position: relative;
+  @include mix.container(var.$navy);
+
+  &_list {
+    @include mix.list-container(20px);
+    right: 20px;
+    padding: 10px;
+    background-color: var.$white;
+
+    &>li {
+      display: block;
+      @include mix.list(40px);
+
+      @each $list in var.$classNames {
+        $index_key: index(var.$classNames, $list);
+
+        &.#{$list} {
+          background-color: nth(var.$buttonColor, $index_key);
+        }
+      }
+    }
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.sidebar {
+  @include mix.main-container(150px, var.$green)
+}
+
+.main {
+  @include mix.main-container(250px, var.$red);
+  position: relative;
+
+  &_inner {
+    @include mix.list-container(40px);
+    left: 40px;
+    flex-wrap: wrap;
+
+    .article {
+      background-color: var.$white;
+      padding: 5px;
+
+      &_box {
+        @include mix.list(140px);
+
+        @each $box in var.$classNames {
+          $index_key: index(var.$classNames, $box);
+  
+          &.#{$box} {
+            background-color: nth(var.$buttonColor, $index_key);
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  @include mix.container(var.$brown)
+}
